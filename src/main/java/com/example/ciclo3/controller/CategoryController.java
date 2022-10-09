@@ -2,12 +2,14 @@ package com.example.ciclo3.controller;
 
 
 import com.example.ciclo3.entities.Category;
+import com.example.ciclo3.entities.Client;
 import com.example.ciclo3.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Category")
@@ -18,6 +20,11 @@ public class CategoryController {
 
     @GetMapping("/all")
     public List<Category> getAll() { return categoryService.getAll();}
+
+    @GetMapping("/{id}")
+    public Optional<Category> getTool(@PathVariable("id") int id){
+        return categoryService.getCategory(id);
+    }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
