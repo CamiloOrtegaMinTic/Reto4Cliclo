@@ -28,7 +28,7 @@ public class AdminController {
     public Admin update (@RequestBody Admin a){return adminService.update(a);}
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return adminService.delete(id);
     }

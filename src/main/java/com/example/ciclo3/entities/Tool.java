@@ -13,11 +13,12 @@ public class Tool implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     @Column(name="\"year\"",nullable= false , length = 150)
     private Integer year;
     private String description;
-    private String name;
+
 
     @ManyToOne
     @JoinColumn( name = "category_id")
