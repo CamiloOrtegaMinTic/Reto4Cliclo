@@ -41,6 +41,14 @@ public class Tool implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -63,14 +71,6 @@ public class Tool implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Category getCategory() {
