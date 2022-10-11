@@ -2,6 +2,7 @@ package com.example.ciclo3.controller;
 
 
 import com.example.ciclo3.entities.Tool;
+import com.example.ciclo3.entities.Tool;
 import com.example.ciclo3.service.ToolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Tool")
+@CrossOrigin(origins = "*")
 public class ToolController {
 
     @Autowired
@@ -28,5 +30,15 @@ public class ToolController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Tool save  (@RequestBody Tool a) {return toolService.save(a);}
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Tool update (@RequestBody Tool a){return toolService.update(a);}
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return toolService.delete(id);
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.example.ciclo3.controller;
 
 
+import com.example.ciclo3.entities.Admin;
 import com.example.ciclo3.entities.Client;
 import com.example.ciclo3.entities.Reservation;
 import com.example.ciclo3.service.ReservationService;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Reservation")
+@CrossOrigin(origins = "*")
 public class ReservationController {
 
     @Autowired
@@ -27,5 +29,15 @@ public class ReservationController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save  (@RequestBody Reservation a) {return reservationService.save(a);}
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update (@RequestBody Reservation a){return reservationService.update(a);}
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return reservationService.delete(id);
+    }
 
 }

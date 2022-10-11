@@ -1,6 +1,7 @@
 package com.example.ciclo3.controller;
 
 
+import com.example.ciclo3.entities.Message;
 import com.example.ciclo3.entities.Client;
 import com.example.ciclo3.entities.Message;
 import com.example.ciclo3.service.MessageService;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Message")
+@CrossOrigin(origins = "*")
 public class MessageController {
 
     @Autowired
@@ -29,5 +31,17 @@ public class MessageController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Message save  (@RequestBody Message a) {return messageService.save(a);}
+
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update (@RequestBody Message a){return messageService.update(a);}
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return messageService.delete(id);
+    }
+
 
 }
