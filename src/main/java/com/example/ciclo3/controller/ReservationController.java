@@ -1,9 +1,7 @@
 package com.example.ciclo3.controller;
 
 
-import com.example.ciclo3.entities.Admin;
-import com.example.ciclo3.entities.Client;
-import com.example.ciclo3.entities.Reservation;
+import com.example.ciclo3.entities.*;
 import com.example.ciclo3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,4 +38,18 @@ public class ReservationController {
         return reservationService.delete(id);
     }
 
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationsReportClient(){
+        return reservationService.getTopClients();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.informePeriodoTiempoReservas(dateOne,dateTwo);
+    }
+
+    @GetMapping("/report-status")
+    public Status getReservationsStatusReport(){
+        return reservationService.getReservationStatusReport();
+    }
 }
