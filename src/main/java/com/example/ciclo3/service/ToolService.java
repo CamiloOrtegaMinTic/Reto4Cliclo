@@ -44,6 +44,9 @@ public class ToolService {
                 if(a.getBrand() != null){
                     q.get().setBrand(a.getBrand());
                 }
+                if(a.getCategory()!=null){
+                    q.get().setCategory(a.getCategory());
+                }
                 if(a.getDescription() != null){
                     q.get().setDescription(a.getDescription());
                 }
